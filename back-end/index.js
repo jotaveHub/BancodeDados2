@@ -18,8 +18,8 @@ const res = await client.query('SELECT $1::text as message', ['Hello world!'])
 console.log(res.rows[0].message) // Hello world!
 await client.end()
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.get('/municipios/:codigo', (req, res) => {
+  console.log(req.params.codigo);
 })
 
 app.listen(port, () => {
