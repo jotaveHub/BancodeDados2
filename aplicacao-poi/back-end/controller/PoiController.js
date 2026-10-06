@@ -6,6 +6,10 @@ export async function getPois(req,res) {
 }
 
 export async function  createPoi(req,res) {
+    try {
     const poi = await Poi.create(req.body)
     res.status(201).json(poi)
+}catch(error) {
+    res.status(400).json(error)
+ }
 }
