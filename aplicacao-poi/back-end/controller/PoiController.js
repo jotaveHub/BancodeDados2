@@ -1,6 +1,6 @@
 import Poi from "../model/Poi.js"
 
-export async function  getPois(req,res) {
+export async function getPois(req,res) {
     const pois = await Poi.findAll();
     res.json(pois);
 }

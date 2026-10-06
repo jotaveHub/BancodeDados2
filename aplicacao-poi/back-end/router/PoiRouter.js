@@ -1,5 +1,5 @@
 import express from "express"
-import { createPoi, getPois } from "../controller/PoiController"
+import { createPoi, getPois } from "../controller/PoiController.js"
 
 const PoiRouter = express.Router()
 

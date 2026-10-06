@@ -1,5 +1,5 @@
 import sequelize from "../database/sequelize.js";
-import { DataTypes, UUID } from "sequelize";
+import { DataTypes } from "sequelize";
 
 const Poi = sequelize.define(
   'Poi',
@@ -27,3 +27,5 @@ const Poi = sequelize.define(
   },
 );
 Poi.sync();
+
+export default Poi;
