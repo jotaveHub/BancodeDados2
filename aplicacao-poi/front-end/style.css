@@ -176,7 +176,8 @@ select {
 }
 
 #form input,
-#form select {
+#form select,
+#form button {
     width: 100%;
     height: 2.95rem;
     border-radius: var(--radius-md);
@@ -186,6 +187,36 @@ select {
     padding: 0 0.95rem;
     font-size: 0.95rem;
     transition: border-color var(--transition), background-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+#btnSalvar {
+    width: 100%;
+    height: 3rem;
+    border: 0;
+    border-radius: var(--radius-md);
+    background: linear-gradient(180deg, #2f9a2f 0%, var(--brand-color) 100%);
+    color: #ffffff;
+    font-size: 0.96rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(34, 139, 34, 0.25);
+    transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition), filter var(--transition);
+}
+
+#btnSalvar:hover {
+    background: linear-gradient(180deg, #34a134 0%, var(--brand-hover) 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(34, 139, 34, 0.32);
+}
+
+#btnSalvar:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus), 0 10px 24px rgba(34, 139, 34, 0.25);
+}
+
+#form button {
+    border: 0;
 }
 
 #form input::placeholder {
