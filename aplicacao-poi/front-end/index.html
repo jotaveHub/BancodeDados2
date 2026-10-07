@@ -79,7 +79,20 @@
             })
         })
 
+        carregarPontos();
 
+        async function carregarPontos() {
+            fetch(`https://localhost:3000/`)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(ponto => {
+                    const maker = L.marker(ponto.localizacao.coordinates)
+                    .addTo(map)
+                marker.bindPopup(ponto.nome)
+                });
+            });    
+        }
+        
     </script>
 </body>
 
