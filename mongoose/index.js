@@ -16,8 +16,29 @@ mongoose.connect(process.env.MONGO_URI)
     })
 
     const Usuario = mongoose.model('Usuario', UsuarioSchema)
+
+    //Inserir
     Usuario.insertOne({
-        nome: "Paulo",
-        email: "paulo@gmail.com"})
+    nome: "Paulo",
+    email: "paulo@gmail.com"})
     .then(()=> console.log('Salvo com sucesso'))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err))
+    
+    
+    //atualizar
+    /*const paulo = await Usuario.findOne({
+        email: "paulo@gmail.com"
+    })
+    paulo.nome = "Paulo da Silva"
+    paulo.save()
+    .then(()=> console.log('Atualizado com sucesso'))
+    .catch(err => console.log(err))*/
+    
+
+    //deletar
+    /*
+    await Usuario.deleteOne({
+        email: "paulo@gmail.com"
+        })
+        .then(()=> console.log('Deletado com sucesso'))
+        .catch(err => console.log(err))*/
