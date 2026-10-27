@@ -1,4 +1,4 @@
-import Poi from "../model/Poi.js"
+import Poi from "../model/Poi.js";
 
 export async function getPois(req,res) {
     const pois = await Poi.find();
@@ -13,3 +13,8 @@ export async function  createPoi(req,res) {
     }
     res.status(400).json({ message: "Erro ao criar Poi"})
 }
+
+export async function getPoiByText(req, res){
+    const pois = await Poi.find(
+        {$text:{$search: req.params.text}});
+    res.json(pois)}

@@ -33,5 +33,9 @@ const poiSchema = new mongoose.Schema(
     },
   });
 
+  poiSchema.index({ localizacao: '2dsphere' });
+  poiSchema.index({nome:'text', descricao:'text'},
+  {default_language: 'pt', weights:{nome:2, decricao:1}});
+
   const Poi = mongoose.model("Poi", poiSchema);
   export default Poi;
