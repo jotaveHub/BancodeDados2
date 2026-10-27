@@ -1,31 +1,37 @@
-import sequelize from "../database/sequelize.js";
-import { DataTypes } from "sequelize";
+import mongoose from "../database/mongoose.js";
+import { randomUUID } from "crypto";
 
-const Poi = sequelize.define(
-  'Poi',
+const poiSchema = new mongoose.Schema(
   {
+    _id: {
+      type: String,
+      default: () => randomUUID(),
+      required: true
+    },
     nome: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: String,
+      required: true,
     },
     descricao: {
-      type: DataTypes.STRING,
+      type: String,
     },
-    tipo:{
-      type: DataTypes.STRING,
-      enum: ['Educação','Lazer','Saúde','Trabalho']
+    tipo: {
+      type: String,
+      enum: ["Educação", "Lazer", "Saúde", "Trabalho"],
+      required: true
     },
     localizacao: {
-      type: DataTypes.GEOMETRY('POINT'),
-      allowNull: false
+      type: {
+        type: String,
+        enum: ["Point"],
+        required: true
+      },
+      coordinates: {
+        type: [Number],
+        required: true
+      },
     },
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true
-    }
-  },
-);
-Poi.sync();
+  });
 
-export default Poi;
+  const Poi = mongoose.model("Poi", poiSchema);
+  export default Poi;
