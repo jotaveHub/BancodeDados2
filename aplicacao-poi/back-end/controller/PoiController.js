@@ -19,15 +19,18 @@ export async function getPoiByText(req, res){
         {$text:{$search: req.params.text}});
     res.json(pois)}
 
-export async function  deletePoi(req,res) {
-    const user = await Poi.deleteOne(req.body);
-    if(user.deletedCount>0) {
+export async function deletePoi(req, res) {
+    const id = req.params.id || req.body._id || req.body.id;
+    const filter = id ? { _id: id } : req.body;
+    const user = await Poi.deleteOne(filter);
+    if (user.deletedCount > 0) {
         res.status(200).json({
-            mensagem:"deletado com sucesso"});
+            mensagem: "deletado com sucesso"
+        });
         return;
     }
     res.status(400).json({
-        mensagem:'usuário não encontrado'
+        mensagem: 'usuário não encontrado'
     });
 }
 
